@@ -1,0 +1,5 @@
+.contactsList {
+  width: var(--contactsListWidth);
+
+  border-right: 1px solid;
+}

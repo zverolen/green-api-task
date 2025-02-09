@@ -1,3 +1,32 @@
+@import url("./styles/designTokens.css");
+
+.visually-hidden {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 body {
   align-content: center;
+
+  height: 100vh;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  
+  width: var(--appWidth);
+  height: var(--appHeight);
+  margin-inline: auto;
+
+  background-color: aquamarine;
 }
