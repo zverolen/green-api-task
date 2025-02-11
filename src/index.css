@@ -10,6 +10,10 @@
   width: 1px;
 }
 
+#root {
+  display: flex;
+}
+
 body {
   align-content: center;
 
@@ -29,4 +33,12 @@ p {
   margin-inline: auto;
 
   background-color: aquamarine;
+}
+
+.received {
+  color: red;
+}
+
+.sent {
+  color: blue;
 }

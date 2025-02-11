@@ -1,14 +1,12 @@
+import { MessageType } from "../../types/types";
+
 import style from "./Message.module.css"
 
-interface MessageProps {
-  text: string;
-  time: string;
-  type: 'received' | 'sent';
-}
+type MessageProps = MessageType
 
-const Message = ( {text, time, type}: MessageProps ) => {
+const Message = ( {text, time, type, id}: MessageProps ) => {
   return (
-    <div className={`${type} ${style.message}`}>
+    <div key={id} className={`${type} ${style.message}`}>
       <p>{text}</p>
       <p>{time}</p>
     </div>
