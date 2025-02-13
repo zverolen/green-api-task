@@ -3,10 +3,10 @@ import Contact from '../contact/Contact'
 import style from './ContactsList.module.css'
 
 interface ContactsListProps {
-  contactPhone: string;
+  contactNumber: string;
 }
 
-const ContactsList = ({ contactPhone }: ContactsListProps) => {
+const ContactsList = ({ contactNumber }: ContactsListProps) => {
  return (
   <aside className={style.contactsList}>
     <div aria-hidden="true"></div>
@@ -15,7 +15,7 @@ const ContactsList = ({ contactPhone }: ContactsListProps) => {
         <h1>Chats</h1>
       </div>
       <div>
-        <Contact phoneNumber={`+${contactPhone}`} isActive={true} />
+        <Contact phoneNumber={`+${contactNumber}`} isActive={true} />
       </div>
     </div>
   </aside>

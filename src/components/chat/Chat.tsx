@@ -2,18 +2,18 @@ import { MessageType } from "../../types/types"
 
 import { useState, useEffect } from "react"
 
-import Message from "../message/Message"
-import MessageInput from "../messageInput/MessageInput"
+import ChatMessage from "../chatMessage/ChatMessage"
+import ChatMessageInput from "../chatMessageInput/ChatMessageInput"
 
-import style from "./MessagesList.module.css"
+import style from "./Chat.module.css"
 
-interface MessageListType {
+interface ChatProps {
   idInstance: string;
   apiTokenInstance: string;
-  contactPhone: string;
+  contactNumber: string;
 }
 
-const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageListType) => {
+const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
 
   const [ chatMessages, setChatMessages ] = useState<MessageType[]>([])
 
@@ -35,12 +35,15 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
         // }
 
         if (result !== null) {
-          setChatMessages(prevMessages => [...prevMessages, {
-            text: result.body.messageData.textMessageData.textMessage,
-            time: "",
-            type: "received",
-            id: result.body.idMessage
-          }])
+          setChatMessages(
+            [...chatMessages, 
+              {
+                text: result.body.messageData.textMessageData.textMessage,
+                time: "",
+                type: "received",
+                id: result.body.idMessage
+              }
+            ])
 
           await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
             method: 'DELETE',
@@ -55,13 +58,13 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
 
     const intervalId = setInterval(receiveMessages, 5000)
     return () => clearInterval(intervalId)
-  }, [apiTokenInstance, idInstance])
+  }, [apiTokenInstance, idInstance, chatMessages])
 
   let printedMessages
 
   if (chatMessages.length > 0) {
     printedMessages = chatMessages.map((message: MessageType) => (
-      <Message id={message.id} text={message.text} time="00:00" type={message.type}/>
+      <ChatMessage id={message.id} key={message.id} text={message.text} time="00:00" type={message.type}/>
     ))
   }
 
@@ -76,11 +79,11 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
 
   
   return (
-    <main className={style.messagesList}>
+    <main className={style.chat}>
       <div>
         <h2>
           <span className="visually-hidden">Chat with number</span>
-          <span>+{contactPhone}</span>
+          <span>+{contactNumber}</span>
         </h2>
       </div>
 
@@ -89,14 +92,14 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
       </div>
 
       {/* Props drilling seems to be acceptable since there are only 3 levels */}
-      <MessageInput 
+      <ChatMessageInput 
         onSend={handleUpdatingMessages} 
         idInstance={idInstance} 
         apiTokenInstance={apiTokenInstance} 
-        contactPhone={contactPhone}
+        contactNumber={contactNumber}
         />
     </main>
   )
 }
 
-export default MessagesList
+export default Chat

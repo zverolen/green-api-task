@@ -1,12 +1,12 @@
 import { useState } from "react"
 
-import style from "./AddNumberForm.module.css"
+import style from "./ContactNumberForm.module.css"
 
-interface AddNumberFormProps {
-  onSubmit: (contactPhone: string) => void;
+interface ContactNumberFormProps {
+  onSubmit: (contactNumber: string) => void;
 }
 
-const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
+const ContactNumberForm = ({ onSubmit }: ContactNumberFormProps) => {
 
   const [ contactNumber, setContactNumber ] =useState<string>('')
 
@@ -30,7 +30,7 @@ const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
   }
 
   return (
-    <div className={style.contactFormContainer}>
+    <div className={style.contactNumberFormContainer}>
       <form>
         <label htmlFor="contactNumber">Номер телефона (только цифры)</label>
         <input 
@@ -49,4 +49,4 @@ const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
   )
 }
 
-export default AddNumberForm
+export default ContactNumberForm

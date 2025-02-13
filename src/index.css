@@ -62,11 +62,11 @@ button {
   overflow: hidden;
 }
 
-.received {
+/* .received {
   background-color: var(--greyDarkCold);
 }
 
 .sent {
   margin-inline-start: auto;
   background-color: var(--greenDark);
-}
+} */

@@ -1,4 +1,4 @@
-.message {
+.chatMessage {
   width: fit-content;
   max-width: var(--messageMaxWidth);
   padding: var(--messagePadding);
@@ -8,4 +8,15 @@
 
   font-weight: var(--fontWeightMessage);
   color: var(--white_medium);
+}
+
+.chatMessageSent {
+  composes: chatMessage;
+  margin-inline-start: auto;
+  background-color: var(--greenDark);
+}
+
+.chatMessageReceived {
+  composes: chatMessage;
+  background-color: var(--greyDarkCold);
 }

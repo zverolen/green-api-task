@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-import AddNumberForm from "./components/addNumberForm/AddNumberForm"
+import ContactNumberForm from "./components/contactNumberForm/contactNumberForm"
 import LoginForm from "./components/loginForm/LoginForm"
 import ContactsList from "./components/contactsList/contactsList"
-import MessagesList from "./components/messagesList/MessagesList"
+import Chat from "./components/chat/Chat"
 
 import { GlobalStateType } from "./types/types"
 
@@ -22,15 +22,15 @@ function App() {
 
   switch (globalState.screen) {
     case 'contactForm':
-      content = <AddNumberForm onSubmit={handleContactPhoneUpdate} />
+      content = <ContactNumberForm onSubmit={handleContactNumberUpdate} />
       break
     case 'chat':
       content = <div className="app">
-            <ContactsList contactPhone={globalState.contactNumber} />
-            <MessagesList 
+            <ContactsList contactNumber={globalState.contactNumber} />
+            <Chat 
               idInstance={globalState.idInstance} 
               apiTokenInstance={globalState.apiTokenInstance}
-              contactPhone={globalState.contactNumber} 
+              contactNumber={globalState.contactNumber} 
               />
         </div>
       break
@@ -47,7 +47,7 @@ function App() {
     })
   }
 
-  function handleContactPhoneUpdate(contactNumber: string) {
+  function handleContactNumberUpdate(contactNumber: string) {
     setGlobalState({
       ...globalState,
       contactNumber: contactNumber,

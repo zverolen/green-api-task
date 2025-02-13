@@ -4,16 +4,16 @@ import { arrowIcon } from "../../svg/svg"
 
 import { MessageType } from "../../types/types"
 
-import style from "./MessageIntput.module.css"
+import style from "./ChatMessageIntput.module.css"
 
-interface MessageInputProps {
+interface ChatMessageInputProps {
   idInstance: string;
   apiTokenInstance: string;
-  contactPhone: string;
+  contactNumber: string;
   onSend: (newMessage: MessageType) => void;
 }
 
-const MessageInput = ({ onSend, idInstance, apiTokenInstance, contactPhone }: MessageInputProps ) => {
+const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber }: ChatMessageInputProps ) => {
 
   const [ message, setMessage ] = useState('')
 
@@ -34,7 +34,7 @@ const MessageInput = ({ onSend, idInstance, apiTokenInstance, contactPhone }: Me
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          chatId: `${contactPhone}@c.us`,
+          chatId: `${contactNumber}@c.us`,
           message: message
         })
       })
@@ -58,7 +58,7 @@ const MessageInput = ({ onSend, idInstance, apiTokenInstance, contactPhone }: Me
     }
   }
   return (
-    <div className={style.messageInput}>
+    <div className={style.chatMessageInput}>
       <form>
         <label htmlFor="messageInput" className="visually-hidden">Message Input</label>
         <input onChange={handleInput} id="messageInput" type="text" value={message} />
@@ -70,4 +70,4 @@ const MessageInput = ({ onSend, idInstance, apiTokenInstance, contactPhone }: Me
   )
 }
 
-export default MessageInput
+export default ChatMessageInput
