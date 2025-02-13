@@ -1,6 +1,77 @@
 :root {
-  --appWidth: calc(800 / 16 * 1rem);
-  --appHeight: calc(600 / 16 * 1rem);
 
-  --contactsListWidth: calc(300 / 16 * 1rem);
+  /* Colors */
+
+  --white_lightest: #FAFAFA;
+  --white_medium: #E1E1E1;
+  --white_darkest: #959393;
+
+  --greyLightCold_lightest: #616363;
+  --greyLightCold_middle: #505252;
+
+  --greyMiddleWarm: #353535;
+  --greyMiddleCold: #3A3C3C;
+
+  --greyDarkWarm: #1E1E1E;
+  --greyDarkCold: #242626;
+
+  --black: #161717;
+
+  --greenLight: #2DA967;
+  --greenDark: #184D38;
+
+  /* Font */
+  --fontFamily: Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Text Sizes */
+
+  --fontSizeText: calc(13 / 16 * 1rem);
+  --fontSizeHeading: calc(14 / 16 * 1rem);
+  --fontWeightHeading: 700;
+  --fontWeightMessage: 400;
+  --letterSpacing: 0.02rem;
+
+  /* Elements' Sizes */
+
+  /** Using calc lets see actual size */
+  /** Using relative units ensures correct zooming */
+  --appWidth: calc(800 / 16 * 1rem);
+  --appHeight: calc(768 / 16 * 1rem);
+
+  --loginLabelMargin: calc(8 / 16 * 1rem);
+  --loginInputMargin: calc(16 / 16 * 1rem);
+  --formPadding: calc(24 / 16 * 1rem);
+
+  --contactsListWidth: calc(346 / 16 * 1rem);
+  --contactsListPadding: calc(10 / 16 * 1rem);
+  --sidebarWidth: calc(66 / 16 * 1rem);
+  --contactsListHeaderMargin: calc(24 / 16 * 1rem);
+  --contactHeight: calc(70 / 16 * 1rem);
+  --contactPaddingInline: calc(8 / 16 * 1rem);
+
+  --messagesHeaderPadding: calc(20 / 16 * 1rem);
+  --messagesListPadding: calc(10 / 16 * 1rem);
+  --messageInputContainerHeight: calc(52 / 16 * 1rem);
+  --messageFormGap: calc(8 / 16 * 1rem);
+  --messageInputHeight: calc(32 / 16 * 1rem);
+  --messageInputWidth: 90%;
+  --messageInputPadding: calc(10 / 16 * 1rem);
+  --messageMaxWidth: calc(276 / 16 * 1rem);
+  --messagePadding: calc(10 / 16 * 1rem);
+  --messageMarginSmall: calc(4 / 16 * 1rem);
+  --messageMarginBig: calc(4 / 16 * 1rem);
+
+  --arrowIconWidth: calc(16 / 16 * 1rem);
+  --arrowIconHeight: calc(14 / 16 * 1rem);
+  --arrowIconMargin: calc(10 / 16 * 1rem);
+
+  /* Misc Sizes */
+
+  --appBorderRadius: calc(10 / 16 * 1rem);
+  --contactBorderRadius: calc(10 / 16 * 1rem);
+  --messageInputBorderRadius: calc(18 / 16 * 1rem);
+  --messageInputButtonBorderRadius: 50%;
+  --messageBorderRadius: calc(15 / 16 * 1rem);
+
+  --borderWidth: calc(1 / 16 * 1rem);
 }

@@ -1,3 +1,11 @@
 .message {
-  border-bottom: 1px solid;
+  width: fit-content;
+  max-width: var(--messageMaxWidth);
+  padding: var(--messagePadding);
+  margin-block-end: var(--messageMarginSmall);
+
+  border-radius: var(--messageBorderRadius);
+
+  font-weight: var(--fontWeightMessage);
+  color: var(--white_medium);
 }

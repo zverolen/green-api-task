@@ -26,7 +26,7 @@ function App() {
       break
     case 'chat':
       content = <div className="app">
-            <ContactsList  />
+            <ContactsList contactPhone={globalState.contactNumber} />
             <MessagesList 
               idInstance={globalState.idInstance} 
               apiTokenInstance={globalState.apiTokenInstance}

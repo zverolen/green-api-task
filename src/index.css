@@ -10,8 +10,8 @@
   width: 1px;
 }
 
-#root {
-  display: flex;
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -19,10 +19,33 @@ body {
 
   height: 100vh;
   margin: 0;
+
+  background-color: var(--greyMiddleCold);
+
+  font-family: var(--fontFamily);
+  font-size: var(--fontSizeText);
+  letter-spacing: var(--letterSpacing);
+  color: var(--white_medium);
 }
 
 p {
   margin: 0;
+}
+
+input {
+  display: block;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  color: var(--white_medium);
+}
+
+button {
+  padding: 0;
+
+  border: none;
 }
 
 .app {
@@ -32,13 +55,18 @@ p {
   height: var(--appHeight);
   margin-inline: auto;
 
-  background-color: aquamarine;
+  background-color: var(--black);
+  border: var(--borderWidth) solid var(--greyLightCold_middle);
+  border-radius: var(--appBorderRadius);
+
+  overflow: hidden;
 }
 
 .received {
-  color: red;
+  background-color: var(--greyDarkCold);
 }
 
 .sent {
-  color: blue;
+  margin-inline-start: auto;
+  background-color: var(--greenDark);
 }

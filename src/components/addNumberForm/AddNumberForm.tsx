@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import style from "./AddNumberForm.module.css"
+
 interface AddNumberFormProps {
   onSubmit: (contactPhone: string) => void;
 }
@@ -18,7 +20,7 @@ const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
     const trimmedNumber = contactNumber[0] === "+" ? contactNumber.trim().slice(1) : contactNumber.trim()
 
     if (trimmedNumber.length < 7 || trimmedNumber.length > 15) {
-      alert("The phone number should be between 7 and 15 digits")
+      alert("Номер должен содержать от 7 до 15 цифр")
       return
     }
 
@@ -28,9 +30,9 @@ const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
   }
 
   return (
-    <div>
+    <div className={style.contactFormContainer}>
       <form>
-        <label htmlFor="contactNumber">Add Phone Number (only digits)</label>
+        <label htmlFor="contactNumber">Номер телефона (только цифры)</label>
         <input 
           id="contactNumber" 
           type="number"
@@ -41,7 +43,7 @@ const AddNumberForm = ({ onSubmit }: AddNumberFormProps) => {
           value={contactNumber} 
           onChange={handleInputChange} 
         />
-        <button type="submit" onClick={handleSubmit}>Submit</button>
+        <button type="submit" onClick={handleSubmit}>Использовать</button>
       </form>
     </div>
   )

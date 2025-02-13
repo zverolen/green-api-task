@@ -2,14 +2,14 @@ import style from './Contact.module.css'
 
 interface ContactProps {
   phoneNumber: string;
-  lastMessage?: string;
+  isActive: boolean;
 }
 
-const Contact = ( {phoneNumber, lastMessage }: ContactProps) => {
+const Contact = ( {phoneNumber, isActive }: ContactProps) => {
+  const contactClass = isActive ? style.contact_active : style.contact
   return (
-    <div className={style.contact}>
+    <div className={contactClass}>
       <p>{phoneNumber}</p>
-      <p>{lastMessage ? lastMessage : 'No message'}</p>
     </div>
   )
 }

@@ -1,4 +1,50 @@
 .messageInput {
+  height: var(--messageInputContainerHeight);
+  width: 100%;
 
-  border-top: 1px solid;
+  align-content: center;
+
+  background-color: var(--greyDarkCold);
+
+  form {
+    display: flex;
+    gap: var(--messageFormGap);
+    width: var(--messageInputWidth);
+    margin-inline: auto;
+  }
+
+  input {
+    flex-basis: 100%;
+
+    height: var(--messageInputHeight);
+    padding: var(--messageInputPadding);
+
+    background-color: var(--greyMiddleCold);
+
+    border: var(--borderWidth) solid var(--greyLightCold_lightest);
+    border-radius: var(--messageInputBorderRadius);
+  }
+
+  button {
+    flex-basis: var(--messageInputHeight);
+    flex-shrink: 0;
+    align-content: center;
+
+    height: var(--messageInputHeight);
+    
+    background-color: var(--greenLight);
+    border-radius: var(--messageInputButtonBorderRadius);
+  }
+
+  svg {
+    display: block;
+
+    width: var(--arrowIconWidth);
+    height: var(--arrowIconHeight);
+    margin-inline-start: var(--arrowIconMargin);
+
+    path {
+      fill: var(--black);
+    }
+  }
 }

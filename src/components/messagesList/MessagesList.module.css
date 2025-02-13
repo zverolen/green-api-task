@@ -2,4 +2,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  width: 100%;
+
+  > div:nth-child(1) {
+    align-content: center;
+    
+    height: var(--messageInputContainerHeight);
+    padding-inline-start: var(--messagesHeaderPadding);
+
+    background-color: var(--greyDarkCold);
+
+    border-bottom: var(--borderWidth) solid var(--greyLightCold_lightest);
+  }
+
+  > h2 {
+    font-size: var(--fontSizeHeading);
+  }
+
+  > div:nth-child(2) {
+    padding: var(--messagesListPadding);
+  }
 }

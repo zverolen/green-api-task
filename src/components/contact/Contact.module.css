@@ -1,3 +1,12 @@
-.contact {
-  border-bottom: 1px solid;
+.contact_active {
+  align-content: center;
+  height: var(--contactHeight);
+  padding-inline: var(--contactPaddingInline);
+
+  background-color: var(--greyMiddleWarm);
+  border-radius: var(--contactBorderRadius);
+
+  font-size: var(--fontSizeHeading);
+  font-weight: var(--fontWeightHeading);
+  color: var(--white_lightest);
 }

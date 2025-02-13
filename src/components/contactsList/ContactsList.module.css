@@ -1,5 +1,31 @@
 .contactsList {
-  width: var(--contactsListWidth);
+  display: flex;
 
-  border-right: 1px solid;
+  flex-shrink: 0;
+  flex-basis: var(--contactsListWidth);
+
+  > div:nth-child(1) {
+    flex-shrink: 0;
+    flex-basis: var(--sidebarWidth);
+
+    background-color: var(--greyDarkCold);
+  }
+
+  > div:nth-child(2) {
+    flex-basis: 100%;
+
+    padding: var(--contactsListPadding);
+
+    border-left: var(--borderWidth) solid var(--greyMiddleWarm);
+    border-right: var(--borderWidth) solid var(--greyMiddleWarm);
+
+    background-color: var(--greyDarkWarm);
+  }
+}
+
+.contactsListHeader {
+  margin-block-end: var(--contactsListHeaderMargin);
+  h1 {
+    font-size: var(--fontSizeHeading);
+  }
 }

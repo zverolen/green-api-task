@@ -1,6 +1,8 @@
 import { useState } from "react"
 
-import { MessageType } from "../../types/types";
+import { arrowIcon } from "../../svg/svg"
+
+import { MessageType } from "../../types/types"
 
 import style from "./MessageIntput.module.css"
 
@@ -52,14 +54,18 @@ const MessageInput = ({ onSend, idInstance, apiTokenInstance, contactPhone }: Me
       setMessage("")
     } catch (error) {
       console.error('Error sending message:', error)
-      alert('Failed to send message. Please try again.') 
+      alert('Сообщение не было отправлено. Попробуйте ещё раз.') 
     }
   }
   return (
     <div className={style.messageInput}>
-      <label htmlFor="messageInput" className="visually-hidden">Message Input</label>
-      <input onChange={handleInput} id="messageInput" type="text" value={message} />
-      <button onClick={sendMessage} type="submit">Ok</button>
+      <form>
+        <label htmlFor="messageInput" className="visually-hidden">Message Input</label>
+        <input onChange={handleInput} id="messageInput" type="text" value={message} />
+        <button onClick={sendMessage} type="submit">
+          {arrowIcon}
+        </button>
+      </form>
     </div>
   )
 }

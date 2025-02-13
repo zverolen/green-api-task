@@ -49,7 +49,7 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
         } 
       } catch (error) {
         console.error('Error receiving message:', error)
-        alert('Failed to receive messages.')
+        alert('Сообщение не было получено.')
       }
     }
 
@@ -58,7 +58,6 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
   }, [apiTokenInstance, idInstance])
 
   let printedMessages
-  let printedMessages2
 
   if (chatMessages.length > 0) {
     printedMessages = chatMessages.map((message: MessageType) => (
@@ -77,10 +76,16 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
 
   
   return (
-    <div className={style.messagesList}>
+    <main className={style.messagesList}>
+      <div>
+        <h2>
+          <span className="visually-hidden">Chat with number</span>
+          <span>+{contactPhone}</span>
+        </h2>
+      </div>
+
       <div>
         {printedMessages}
-        {printedMessages2}
       </div>
 
       {/* Props drilling seems to be acceptable since there are only 3 levels */}
@@ -90,7 +95,7 @@ const MessagesList = ({ idInstance, apiTokenInstance, contactPhone }: MessageLis
         apiTokenInstance={apiTokenInstance} 
         contactPhone={contactPhone}
         />
-    </div>
+    </main>
   )
 }
 
