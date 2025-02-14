@@ -24,7 +24,9 @@
 }
 
 .contactsListHeader {
+  padding: var(--contactsListPadding);
   margin-block-end: var(--contactsListHeaderMargin);
+
   h1 {
     font-size: var(--fontSizeHeading);
   }

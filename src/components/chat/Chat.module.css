@@ -18,7 +18,7 @@
     border-bottom: var(--borderWidth) solid var(--greyLightCold_lightest);
   }
 
-  > h2 {
+  h2 {
     font-size: var(--fontSizeHeading);
   }
 

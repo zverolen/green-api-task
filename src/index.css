@@ -24,11 +24,12 @@ body {
 
   font-family: var(--fontFamily);
   font-size: var(--fontSizeText);
+  line-height: var(--lineHeight);
   letter-spacing: var(--letterSpacing);
   color: var(--white_medium);
 }
 
-p {
+p, h1, h2 {
   margin: 0;
 }
 

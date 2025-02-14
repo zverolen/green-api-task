@@ -4,14 +4,30 @@
   position: relative;
 
   width: fit-content;
+  min-width: var(--messageMinWidth);
   max-width: var(--messageMaxWidth);
-  padding: var(--messagePadding);
+  padding: var(--messagePadding) var(--messagePadding) var(--messagePaddingBottom) var(--messagePadding);
   margin-block-end: var(--messageMarginSmall);
 
   border-radius: var(--messageBorderRadius);
 
   font-weight: var(--fontWeightMessage);
   color: var(--white_medium);
+  
+  > p:nth-child(1) {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  > p:nth-child(2) {
+    position: absolute;
+    right: var(--timeRight);
+    bottom: var(--timeBottom);
+
+    font-size: var(--fontSizeTime);
+    /* color: var(--white_darkest); */
+    opacity: var(--timeOpacity);
+  }
 }
 
 .chatMessageSent {

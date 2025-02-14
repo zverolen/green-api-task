@@ -15,8 +15,11 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
   const [ chatMessages, setChatMessages ] = useState<MessageType[]>([])
 
   useEffect(() => {
+    let isSubscribed = true;
+
     const receiveMessages = async () => {
-    
+      if (!isSubscribed) return; 
+      
       try {
         const requestOptions = {
           method: 'GET'
@@ -24,6 +27,8 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
 
         const response = await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`, requestOptions)
         const result = await response.json()
+
+        if (!isSubscribed) return;  
 
         if (result !== null) {
           if (result.body.typeWebhook === 'incomingMessageReceived') {
@@ -34,25 +39,31 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
               id: result.body.idMessage,
               timestamp: result.body.timestamp
             }])
-  
-            await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
-              method: 'DELETE',
-              headers: {}
-            })
-          } else {
-            await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
-              method: 'DELETE',
-              headers: {}
-            })
-          }
+          } 
+
+          await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
+            method: 'DELETE',
+            headers: {}
+          })
+        }
+        
+        if (isSubscribed) {
+          setTimeout(receiveMessages, 0)
         }
       } catch (error) {
         console.error('Error receiving message:', error)
-      }
-    } 
 
-    const intervalId = setInterval(receiveMessages, 1000)
-    return () => clearInterval(intervalId)
+        if (isSubscribed) {
+          setTimeout(receiveMessages, 5000)
+        }
+      }
+    }
+
+    receiveMessages()
+
+    return () => {
+      isSubscribed = false
+    }
   }, [apiTokenInstance, idInstance])
 
   useEffect(() => {
