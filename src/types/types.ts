@@ -1,8 +1,9 @@
 export interface MessageType {
   text: string;
-  time: string;
+  time?: string;
   type: 'received' | 'sent';
   id: string;
+  timestamp?: number;
 }
 
 export interface GlobalStateType {

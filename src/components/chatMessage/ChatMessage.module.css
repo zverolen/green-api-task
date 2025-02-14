@@ -1,4 +1,8 @@
+/* eslint-disable no-undef */
+
 .chatMessage {
+  position: relative;
+
   width: fit-content;
   max-width: var(--messageMaxWidth);
   padding: var(--messagePadding);

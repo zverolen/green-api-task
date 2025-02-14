@@ -1,4 +1,6 @@
 .chat {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,7 +22,12 @@
     font-size: var(--fontSizeHeading);
   }
 
-  > div:nth-child(2) {
-    padding: var(--messagesListPadding);
-  }
+}
+
+.chatMessages {
+  align-content: end;
+  padding: var(--messagesListPadding);
+  padding-block-end: var(--messageInputContainerHeight);
+
+  overflow: scroll;
 }

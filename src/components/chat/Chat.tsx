@@ -1,9 +1,11 @@
-import { MessageType } from "../../types/types"
-
 import { useState, useEffect } from "react"
 
 import ChatMessage from "../chatMessage/ChatMessage"
 import ChatMessageInput from "../chatMessageInput/ChatMessageInput"
+
+import { formatTime } from "../../utils/utils"
+
+import { MessageType } from "../../types/types"
 
 import style from "./Chat.module.css"
 
@@ -25,47 +27,76 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
           method: 'GET'
         }
 
-        const response = await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/receiveNotification/${apiTokenInstance}?receiveTimeout=10`, requestOptions)
+        const response = await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`, requestOptions)
         const result = await response.json()
 
-        console.log(result)
-  
-        // if (!result) {
-        //   return;
-        // }
-
         if (result !== null) {
-          setChatMessages(
-            [...chatMessages, 
-              {
-                text: result.body.messageData.textMessageData.textMessage,
-                time: "",
-                type: "received",
-                id: result.body.idMessage
-              }
-            ])
-
-          await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
-            method: 'DELETE',
-            headers: {}
-          })
-        } 
+          if (result.body.typeWebhook === 'incomingMessageReceived') {
+            setChatMessages(c => [...c, {
+              text: result.body.messageData.textMessageData.textMessage,
+              time: "",
+              type: "received",
+              id: result.body.idMessage,
+              timestamp: result.body.timestamp
+            }])
+  
+            await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
+              method: 'DELETE',
+              headers: {}
+            })
+          } else {
+            await fetch(`https://7105.api.greenapi.com/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${result.receiptId}`, {
+              method: 'DELETE',
+              headers: {}
+            })
+          }
+        }
       } catch (error) {
         console.error('Error receiving message:', error)
-        alert('Сообщение не было получено.')
       }
-    }
+    } 
 
-    const intervalId = setInterval(receiveMessages, 5000)
+    const intervalId = setInterval(receiveMessages, 1000)
     return () => clearInterval(intervalId)
-  }, [apiTokenInstance, idInstance, chatMessages])
+  }, [apiTokenInstance, idInstance])
+
+  useEffect(() => {
+    const chatContainer = document.getElementById('chatMessages')
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight
+      console.log(chatContainer.scrollHeight)
+    }
+  }, [chatMessages])
 
   let printedMessages
 
+  let typeKeeper = ""
   if (chatMessages.length > 0) {
-    printedMessages = chatMessages.map((message: MessageType) => (
-      <ChatMessage id={message.id} key={message.id} text={message.text} time="00:00" type={message.type}/>
-    ))
+    printedMessages = chatMessages.map((message: MessageType) => {
+      if (message.type !== typeKeeper) 
+        {
+          typeKeeper = message.type
+          return <ChatMessage 
+            id={message.id} 
+            text={message.text} 
+            time={formatTime(message.timestamp ?? Date.now() / 1000)} 
+            type={message.type}
+            isFirst={true}
+            timestamp={message.timestamp}
+            key={message.id}
+          />
+        } else {
+          return <ChatMessage 
+          id={message.id} 
+          text={message.text} 
+          time={formatTime(message.timestamp ?? Date.now() / 1000)} 
+          type={message.type}
+          timestamp={message.timestamp}
+          key={message.id}
+        />
+        }
+      
+    })
   }
 
   function handleUpdatingMessages(newMessage: MessageType) {
@@ -73,7 +104,8 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
       text: newMessage.text,
       time: newMessage.time,
       type: newMessage.type,
-      id: newMessage.id
+      id: newMessage.id,
+      timestamp: newMessage.timestamp
     }])
   }
 
@@ -87,7 +119,7 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
         </h2>
       </div>
 
-      <div>
+      <div id="chatMessages" className={style.chatMessages}>
         {printedMessages}
       </div>
 

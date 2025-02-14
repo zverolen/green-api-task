@@ -27,7 +27,7 @@ const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber 
     const url = `https://7105.api.greenapi.com/waInstance${idInstance}/sendMessage/${apiTokenInstance}`
 
     try {
-     
+      const timestamp = Date.now() / 1000
       const response  = await fetch(url, {
         method: 'POST',
         headers: {
@@ -49,8 +49,10 @@ const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber 
         text: message,
         time: "00:00",
         type: "sent",
-        id: result.idMessage
+        id: result.idMessage,
+        timestamp: timestamp
       })
+      
       setMessage("")
     } catch (error) {
       console.error('Error sending message:', error)
