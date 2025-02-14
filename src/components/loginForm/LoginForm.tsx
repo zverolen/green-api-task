@@ -53,7 +53,7 @@ const LoginForm = ( { onSubmit }: LoginFormProps ) => {
         </div>
         <div>
           <label htmlFor="apiTokenInstance">Ваш apiTokenInstance (обязательно)</label>
-          <input id="apiTokenInstance" type="text" required value={apiTokenInstance} onChange={handleInputChange} />
+          <input id="apiTokenInstance" type="password" required value={apiTokenInstance} onChange={handleInputChange} />
         </div>
         <button type="submit" onClick={handleSubmit}>Применить</button>
       </form>
