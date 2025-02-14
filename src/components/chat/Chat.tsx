@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react"
-
-import ChatMessage from "../chatMessage/ChatMessage"
-import ChatMessageInput from "../chatMessageInput/ChatMessageInput"
-
-import { formatTime } from "../../utils/utils"
-
-import { MessageType } from "../../types/types"
-
-import style from "./Chat.module.css"
+import { useState, useEffect } from 'react'
+import ChatMessage from '../chatMessage/ChatMessage'
+import ChatMessageInput from '../chatMessageInput/ChatMessageInput'
+import { formatTime } from '../../utils/utils'
+import { MessageType } from '../../types/types'
+import style from './Chat.module.css'
 
 interface ChatProps {
   idInstance: string;
@@ -16,7 +12,6 @@ interface ChatProps {
 }
 
 const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
-
   const [ chatMessages, setChatMessages ] = useState<MessageType[]>([])
 
   useEffect(() => {
@@ -34,8 +29,8 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
           if (result.body.typeWebhook === 'incomingMessageReceived') {
             setChatMessages(c => [...c, {
               text: result.body.messageData.textMessageData.textMessage,
-              time: "",
-              type: "received",
+              time: '',
+              type: 'received',
               id: result.body.idMessage,
               timestamp: result.body.timestamp
             }])
@@ -62,6 +57,7 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
 
   useEffect(() => {
     const chatContainer = document.getElementById('chatMessages')
+
     if (chatContainer) {
       chatContainer.scrollTop = chatContainer.scrollHeight
       console.log(chatContainer.scrollHeight)
@@ -69,8 +65,8 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
   }, [chatMessages])
 
   let printedMessages
+  let typeKeeper = ''
 
-  let typeKeeper = ""
   if (chatMessages.length > 0) {
     printedMessages = chatMessages.map((message: MessageType) => {
       if (message.type !== typeKeeper) 
@@ -95,7 +91,6 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
           key={message.id}
         />
         }
-      
     })
   }
 
@@ -109,7 +104,6 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
     }])
   }
 
-  
   return (
     <main className={style.chat}>
       <div>

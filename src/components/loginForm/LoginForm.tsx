@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import style from "./LoginForm.module.css"
+import style from './LoginForm.module.css'
 
 interface LoginFormProps {
   onSubmit: (data: { idInstance: string; apiTokenInstance: string }) => void;
@@ -28,12 +28,12 @@ const LoginForm = ( { onSubmit }: LoginFormProps ) => {
     event.preventDefault()
 
     if (trimmedId.length !== 10) {
-      alert("Ваш idInstance должен содержать 10 цифр")
+      alert('Ваш idInstance должен содержать 10 цифр')
       return
     }
 
     if (trimmedToken.length !== 50 || !/^[a-z0-9]+$/.test(trimmedToken)) {
-      alert("Ваш apiTokenInstance не подходит")
+      alert('Ваш apiTokenInstance не подходит')
       return
     }
 

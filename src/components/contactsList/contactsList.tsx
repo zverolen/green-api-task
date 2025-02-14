@@ -1,5 +1,4 @@
 import Contact from '../contact/Contact'
-
 import style from './ContactsList.module.css'
 
 interface ContactsListProps {

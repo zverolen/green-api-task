@@ -1,10 +1,7 @@
-import { useState } from "react"
-
-import { arrowIcon } from "../../svg/svg"
-
-import { MessageType } from "../../types/types"
-
-import style from "./ChatMessageIntput.module.css"
+import { useState } from 'react'
+import { arrowIcon } from '../../svg/svg'
+import { MessageType } from '../../types/types'
+import style from './ChatMessageInput.module.css'
 
 interface ChatMessageInputProps {
   idInstance: string;
@@ -14,7 +11,6 @@ interface ChatMessageInputProps {
 }
 
 const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber }: ChatMessageInputProps ) => {
-
   const [ message, setMessage ] = useState('')
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -23,7 +19,6 @@ const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber 
 
   const sendMessage = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-
     const url = `https://7105.api.greenapi.com/waInstance${idInstance}/sendMessage/${apiTokenInstance}`
 
     try {
@@ -44,21 +39,22 @@ const ChatMessageInput = ({ onSend, idInstance, apiTokenInstance, contactNumber 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      // console.log(result)
+
       onSend({
         text: message,
-        time: "00:00",
-        type: "sent",
+        time: '00:00',
+        type: 'sent',
         id: result.idMessage,
         timestamp: timestamp
       })
       
-      setMessage("")
+      setMessage('')
     } catch (error) {
       console.error('Error sending message:', error)
       alert('Сообщение не было отправлено. Попробуйте ещё раз.') 
     }
   }
+  
   return (
     <div className={style.chatMessageInput}>
       <form>

@@ -61,12 +61,6 @@ button {
 
   overflow: hidden;
 }
-
-/* .received {
-  background-color: var(--greyDarkCold);
+.first {
+  margin-block-start: var(--messagesListPadding);
 }
-
-.sent {
-  margin-inline-start: auto;
-  background-color: var(--greenDark);
-} */

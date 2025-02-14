@@ -1,13 +1,11 @@
-import { useState } from "react"
-
-import style from "./ContactNumberForm.module.css"
+import { useState } from 'react'
+import style from './ContactNumberForm.module.css'
 
 interface ContactNumberFormProps {
   onSubmit: (contactNumber: string) => void;
 }
 
 const ContactNumberForm = ({ onSubmit }: ContactNumberFormProps) => {
-
   const [ contactNumber, setContactNumber ] =useState<string>('')
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -16,11 +14,10 @@ const ContactNumberForm = ({ onSubmit }: ContactNumberFormProps) => {
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
-
-    const trimmedNumber = contactNumber[0] === "+" ? contactNumber.trim().slice(1) : contactNumber.trim()
+    const trimmedNumber = contactNumber[0] === '+' ? contactNumber.trim().slice(1) : contactNumber.trim()
 
     if (trimmedNumber.length < 7 || trimmedNumber.length > 15) {
-      alert("Номер должен содержать от 7 до 15 цифр")
+      alert('Номер должен содержать от 7 до 15 цифр')
       return
     }
 
@@ -37,8 +34,6 @@ const ContactNumberForm = ({ onSubmit }: ContactNumberFormProps) => {
           id="contactNumber" 
           type="number"
           placeholder="00000000000"
-          min="7"
-          max="15"
           required
           value={contactNumber} 
           onChange={handleInputChange} 
