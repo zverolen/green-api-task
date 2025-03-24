@@ -11,6 +11,8 @@ interface ChatProps {
   contactNumber: string;
 }
 
+const pollingIntervalMs = 5000; // 5 seconds between polling attempts
+
 const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
   const [ chatMessages, setChatMessages ] = useState<MessageType[]>([])
 
@@ -48,7 +50,7 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
         }
         
         if (isSubscribed) {
-          setTimeout(receiveMessages, 0)
+          setTimeout(receiveMessages, pollingIntervalMs)
         }
       } catch (error) {
         console.error('Error receiving message:', error)
@@ -124,7 +126,7 @@ const Chat = ({ idInstance, apiTokenInstance, contactNumber }: ChatProps) => {
         </h2>
       </div>
 
-      <div id="chatMessages" className={style.chatMessages}>
+      <div id="chatMessages" className={style.chatMessages} aria-live="polite">
         {printedMessages}
       </div>
 

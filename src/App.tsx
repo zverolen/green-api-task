@@ -25,7 +25,7 @@ function App() {
       content = <ContactNumberForm onSubmit={handleContactNumberUpdate} />
       break
     case 'chat':
-      content = <div className="app">
+      content = <div className="chat">
             <ContactsList contactNumber={globalState.contactNumber} />
             <Chat 
               idInstance={globalState.idInstance} 

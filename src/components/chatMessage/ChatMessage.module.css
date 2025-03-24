@@ -15,7 +15,6 @@
   color: var(--white_medium);
   
   > p:nth-child(1) {
-    word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
@@ -25,8 +24,7 @@
     bottom: var(--timeBottom);
 
     font-size: var(--fontSizeTime);
-    /* color: var(--white_darkest); */
-    opacity: var(--timeOpacity);
+    color: var(--greenGrey);
   }
 }
 

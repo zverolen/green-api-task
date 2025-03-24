@@ -20,21 +20,26 @@
   input {
     flex-basis: 100%;
 
-    height: var(--messageInputHeight);
+    height: var(--controlHeight);
     padding: var(--messageInputPadding);
 
     background-color: var(--greyMiddleCold);
+  }
 
-    border: var(--borderWidth) solid var(--greyLightCold_lightest);
-    border-radius: var(--messageInputBorderRadius);
+  input:is(:valid) {
+    border-color: initial;
+  }
+
+  input:is(:hover, :focus-visible) {
+    outline-color: var(--greenLight);
   }
 
   button {
-    flex-basis: var(--messageInputHeight);
+    flex-basis: var(--controlHeight);
     flex-shrink: 0;
     align-content: center;
 
-    height: var(--messageInputHeight);
+    height: var(--controlHeight);
     
     background-color: var(--greenLight);
     border-radius: var(--messageInputButtonBorderRadius);

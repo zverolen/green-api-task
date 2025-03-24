@@ -1,8 +1,9 @@
 .contactsList {
   display: flex;
 
-  flex-shrink: 0;
-  flex-basis: var(--contactsListWidth);
+  /* flex-shrink: 0;
+  flex-basis: var(--contactsListWidth); */
+  flex-basis: 40%;
 
   > div:nth-child(1) {
     flex-shrink: 0;
@@ -20,6 +21,12 @@
     border-right: var(--borderWidth) solid var(--greyMiddleWarm);
 
     background-color: var(--greyDarkWarm);
+  }
+}
+
+@media screen and (max-width: calc(679 / 16 * 1rem)) {
+  .contactsList {
+    display: none;
   }
 }
 

@@ -2,85 +2,114 @@
 
   /* Colors */
 
-  --white_lightest: #FAFAFA;
-  --white_medium: #E1E1E1;
-  --white_darkest: #959393;
+  --white_lightest: oklch(98.51% 0 116.2);
+  --white_medium: oklch(90.97% 0 116.2);
+  --white_darkest: oklch(66.49% 0.0024 17.22);
 
-  --greyLightCold_lightest: #616363;
-  --greyLightCold_middle: #505252;
+  --greyLightCold_lightest: oklch(49.79% 0.0025 197.08);
+  --greyLightCold_middle: oklch(43.68% 0.0026 197.06);
 
-  --greyMiddleWarm: #353535;
-  --greyMiddleCold: #3A3C3C;
+  --greyMiddleWarm: oklch(32.9% 0 116.2);
+  --greyMiddleCold: oklch(35.42% 0.0027 197.03);
 
-  --greyDarkWarm: #1E1E1E;
-  --greyDarkCold: #242626;
+  --greyDarkWarm: oklch(23.5% 0 116.2);
+  --greyDarkCold: oklch(26.66% 0.0029 196.98);
 
-  --black: #161717;
+  --black: oklch(20.35% 0.0016 197.03);
 
-  --greenLight: #2DA967;
-  --greenDark: #184D38;
+  --greenLight: oklch(70.35% 0.1458 154.92);
+  --greenDark: oklch(37.86% 0.0669 163.57);
+  --greenGrey: oklch(76.82% 0.029 163.81);
+  --red: oklch(72.36% 0.1742 13.9);
 
   /* Font */
   --fontFamily: Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   /* Text Sizes */
 
-  --fontSizeText: calc(13 / 16 * 1rem);
+  /* --fontSizeText: calc(13 / 16 * 1rem);
   --fontSizeHeading: calc(13 / 16 * 1rem);
-  --fontSizeTime: calc(11 / 16 * 1rem);
-  --fontWeightHeading: 700;
+  --fontSizeTime: calc(11 / 16 * 1rem); */
+  --fontSizeText: calc(18 / 16 * 1rem);
+  --fontSizeHeading: calc(18 / 16 * 1rem);
+  --fontSizeTime: calc(14 / 16 * 1rem);
+
+  /* --fontWeightHeading: 700; */
+  --fontWeightHeading: 600;
   --fontWeightMessage: 400;
+
   --letterSpacing: 0.04rem;
+
   --lineHeight: 1.5;
 
   /* Elements' Sizes */
 
   /** Using calc lets see actual size */
   /** Using relative units ensures correct zooming */
-  --appWidth: calc(800 / 16 * 1rem);
-  --appHeight: calc(768 / 16 * 1rem);
+  --chatWidth: min(90%, calc(800 / 16 * 1rem));
+  --chatHeight: 90vh;
+
+  --resetMargin: 0;
+
+  --errorMarginTop: calc(8 / 16 * 1rem);
+  --errorMarginBottom: calc(24 / 16 * 1rem);
+
+  --controlHeight: calc(44 / 16 * 1rem);
+
+  --formPadding: calc(32 / 16 * 1rem);
+  --formWidth: min(90%, calc(400 / 16 * 1rem));
+  --formMinHeight: calc(269 / 16 * 1rem);
+  --formContainerWidth: 100%;
+  --formContainerHeight: 100vh;
+  --formContainerPaddingTop: 25vh;
 
   --loginLabelMargin: calc(8 / 16 * 1rem);
-  --loginInputMargin: calc(16 / 16 * 1rem);
-  --formPadding: calc(24 / 16 * 1rem);
+  --loginInputMargin: calc(24 / 16 * 1rem);
 
   --contactsListWidth: calc(346 / 16 * 1rem);
   --contactsListPadding: calc(10 / 16 * 1rem);
+
   --sidebarWidth: calc(66 / 16 * 1rem);
+
   --contactsListHeaderMargin: calc(14 / 16 * 1rem);
-  --contactHeight: calc(70 / 16 * 1rem);
-  --contactPaddingInline: calc(8 / 16 * 1rem);
+  --contactHeight: calc(48 / 16 * 1rem);
+  --contactPaddingInline: calc(16 / 16 * 1rem);
 
   --messagesHeaderPadding: calc(20 / 16 * 1rem);
   --messagesListPadding: calc(10 / 16 * 1rem);
-  --messageInputContainerHeight: calc(52 / 16 * 1rem);
+  --messageInputContainerHeight: calc(72 / 16 * 1rem);
   --messageFormGap: calc(8 / 16 * 1rem);
-  --messageInputHeight: calc(32 / 16 * 1rem);
   --messageInputWidth: 90%;
   --messageInputPadding: calc(10 / 16 * 1rem);
+
   --messageMaxWidth: calc(276 / 16 * 1rem);
   --messageMinWidth: calc(68 / 16 * 1rem);
-  --messagePadding: calc(10 / 16 * 1rem);
-  --messagePaddingBottom: calc(20 / 16 * 1rem);
+  --messagePadding: calc(14 / 16 * 1rem);
+  --messagePaddingBottom: calc(24 / 16 * 1rem);
   --messageMarginSmall: calc(4 / 16 * 1rem);
   --messageMarginBig: calc(4 / 16 * 1rem);
 
-  --timeRight: calc(10 / 16 * 1rem);
+  --timeRight: calc(14 / 16 * 1rem);
   --timeBottom: calc(6 / 16 * 1rem);
 
   --arrowIconWidth: calc(16 / 16 * 1rem);
   --arrowIconHeight: calc(14 / 16 * 1rem);
-  --arrowIconMargin: calc(10 / 16 * 1rem);
+  --arrowIconMargin: calc(16  / 16 * 1rem);
 
   --borderWidth: calc(1 / 16 * 1rem);
+
+  --outlineWidth: calc(2 / 16 * 1rem);
+  --outlineOffset: calc(2 / 16 * 1rem);
 
   /* Misc */
 
   --appBorderRadius: calc(10 / 16 * 1rem);
-  --contactBorderRadius: calc(10 / 16 * 1rem);
-  --messageInputBorderRadius: calc(18 / 16 * 1rem);
+  --contactBorderRadius: calc(16 / 16 * 1rem);
+  --messageInputBorderRadius: calc(30 / 16 * 1rem);
   --messageInputButtonBorderRadius: 50%;
-  --messageBorderRadius: calc(12 / 16 * 1rem);
+  --messageBorderRadius: calc(16 / 16 * 1rem);
+
+  --breakpoint: calc(679 / 16 * 1rem);
 
   --timeOpacity: 0.7;
 }

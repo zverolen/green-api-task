@@ -4,8 +4,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-basis: 60%;
+  flex-shrink: 0;
 
-  width: 100%;
+  /* width: 100%; */
 
   > div:nth-child(1) {
     align-content: center;
@@ -20,14 +22,30 @@
 
   h2 {
     font-size: var(--fontSizeHeading);
+    font-weight: var(--fontWeightHeading);
   }
 
 }
 
+@media screen and (max-width: calc(679 / 16 * 1rem)) {
+  .chat {
+    flex-basis: 100%;
+  }
+}
+
 .chatMessages {
   align-content: end;
+
+  height: calc(100% - var(--messageInputContainerHeight));
   padding: var(--messagesListPadding);
   padding-block-end: var(--messageInputContainerHeight);
 
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
+
+.chatMessages::-webkit-scrollbar {
+  display: none;
+}
+
+

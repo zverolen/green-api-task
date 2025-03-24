@@ -34,26 +34,107 @@ p, h1, h2 {
 }
 
 input {
+  height: var(--controlHeight);
   display: block;
   box-sizing: border-box;
 
   margin: 0;
   padding: 0;
 
-  color: var(--white_medium);
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+
+  border: var(--borderWidth) solid var(--white_darkest);
+  border-radius: var(--messageInputBorderRadius);
+}
+
+input:is(:hover, :focus-visible) {
+  outline: var(--outlineWidth) solid var(--white_medium);
+  outline-offset: var(--outlineOffset);
+}
+
+input:is(:valid) {
+  color: var(--greenLight);
+  border-color: var(--greenLight);
+  outline-color: var(--greenLight);
 }
 
 button {
+  height: var(--controlHeight);
   padding: 0;
 
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+
   border: none;
+  color: var(--greyDarkWarm)
 }
 
-.app {
+button:is(:hover, :focus-visible) {
+  outline: var(--outlineWidth) solid var(--greenLight);
+  outline-offset: var(--outlineOffset);
+}
+
+::placeholder {
+  color: var(--white_darkest);
+  opacity: 1;
+}
+
+.loginFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: var(--formContainerWidth);
+  height: var(--formContainerHeight);
+  padding-block-start: var(--formContainerPaddingTop);
+  margin-inline: auto;
+
+  background-color: var(--black);
+  /* border: var(--borderWidth) solid var(--white_medium);
+  border-radius: var(--appBorderRadius); */
+}
+
+.loginForm {
+  width: var(--formWidth);
+  padding: var(--formPadding);
+
+  background-color: var(--greyDarkWarm);
+  border: var(--borderWidth) solid var(--white_darkest);
+  border-radius: var(--appBorderRadius);
+
+  label {
+    display: block;
+    margin-block-end: var(--loginLabelMargin);
+  }
+
+  input {
+    display: block;
+    
+    width: 100%;
+    padding: var(--messageInputPadding);
+    margin-block-end: var(--loginInputMargin);
+
+    background-color: var(--greyMiddleWarm);
+  }
+
+  button {
+    width: 100%;
+    margin-block-start: var(--loginInputMargin);
+
+    background-color: var(--greenLight);
+    border-radius: var(--messageInputBorderRadius);
+  }
+}
+
+.chat {
   display: flex;
   
-  width: var(--appWidth);
-  height: var(--appHeight);
+  width: var(--chatWidth);
+  height: var(--chatHeight);
   margin-inline: auto;
 
   background-color: var(--black);
@@ -64,4 +145,26 @@ button {
 }
 .first {
   margin-block-start: var(--messagesListPadding);
+}
+
+div:is(.error) {
+  color: var(--red);
+
+  input {
+    margin-block-end: var(--resetMargin);
+
+    color: var(--red);
+
+    border-color: var(--red);
+    outline-color: var(--red);
+  }
+
+  div[aria-live="polite"] {
+    width: 100%;
+  }
+
+  p {
+    margin-block-start: var(--errorMarginTop);
+    margin-block-end: var(--errorMarginBottom);
+  }
 }

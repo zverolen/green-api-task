@@ -6,3 +6,15 @@ export const formatTime = (timestamp: number) => {
     hour12: false
   })
 }
+
+interface FormValues {
+  idInstance: string;
+  apiTokenInstance: string;
+}
+
+export function getTrimmedValues(values: FormValues): FormValues {
+  return {
+    idInstance: values.idInstance.trim(),
+    apiTokenInstance: values.apiTokenInstance.trim()
+  }
+}
